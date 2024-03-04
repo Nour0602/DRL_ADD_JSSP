@@ -1,5 +1,5 @@
 import numpy as np
-from uniform_instance_gen_re import uni_instance_gen
+from Inst_generator import uni_instance_gen
 import pickle
 
 
