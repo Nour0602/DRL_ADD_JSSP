@@ -5,7 +5,7 @@ from docplex.cp.config import context
 from docplex.cp.model import *
 import plotly.express as px
 import pandas as pd
-from obj import *
+from Inst_reader import *
 
 context.solver.log_output = None
 
@@ -133,7 +133,7 @@ def optimize_and_visualize(hour,prev,dur , seq, start_dc, end,eliminated, time_l
 if __name__ == '__main__':
     
     #Data initialization of the reference schedule
-    simulations= open("./50/3/dico_data_multi.pkl", "rb")
+    simulations= open("./dico_data_multi.pkl", "rb")
     simulations=simulations.read()
     simulations=pickle.loads(simulations)
 
@@ -211,7 +211,7 @@ if __name__ == '__main__':
      
         dico_data_multi[simulation]=dico_sim
     # scenarios_file=open("cplex_data.pkl", "wb")
-    scenarios_file=open("./50/3/cplex_data.pkl", "wb")
+    scenarios_file=open("./cplex_data.pkl", "wb")
     pickle.dump(dico_data_multi, scenarios_file)
     scenarios_file.close()   
 

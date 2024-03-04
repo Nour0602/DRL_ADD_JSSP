@@ -12,11 +12,11 @@ import pickle
 
 import argparse
 from Params_re import configs
-from uniform_instance_gen_re import uni_instance_gen
+from Inst_generator import uni_instance_gen
 from mb_agg_re import *
 from agent_utils_re import *
-from JSSP_Env_re import SJSSP 
-from early import PPO
+from Reset_Set_Env import SJSSP 
+from Train_PPO import PPO
 from generate_ref_cp import*
 np.set_printoptions(suppress=True)
 
@@ -43,7 +43,7 @@ SEED = params_re.seed
 batch=1
 
 # load optimal policy
-path = './50/{}.pth'.format(str(15) + '_' + str(115) + '_' + str(LOW) + '_' + str(HIGH))
+path = '{}.pth'.format(str(15) + '_' + str(15) + '_' + 'alpha' + '_' + str(50))
 data_generator = uni_instance_gen
 # define calculations per simulation: 
 dico_data_multi={}
@@ -250,7 +250,7 @@ for simulation in range(N_sim):
 
     dico_data_multi[simulation]=dico_sim 
         
-scenarios_file=open("./50/3/dico_data_multi.pkl", "wb")
+scenarios_file=open("./dico_data_multi.pkl", "wb")
 pickle.dump(dico_data_multi, scenarios_file)
 scenarios_file.close()   
 

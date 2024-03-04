@@ -1,13 +1,12 @@
 import gym
 import numpy as np
 from gym.utils import EzPickle
-from uniform_instance_gen_re import override
+from Inst_generator import override
 from updateEntTimeLB_re import calEndTimeLB
 from Params_re import configs
 from permissibleLS_re import permissibleLeftShift
 from updateAdjMat_re import getActionNbghs
-from uniform_instance_gen_re import uni_instance_gen
-import math as m
+# import math as m
 import random
 #from math import abs
 #Adjacency matrix transfers information of precedence between operations of the same job and meant to be processed on the same machine
