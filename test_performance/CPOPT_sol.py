@@ -88,6 +88,7 @@ def optimize(instance,hour,prev, dur , seq, start_dc, end, eliminated,max_time =
             end_cp[job.id-1, task.order-1]=end
             solution.add(task, start, end)
     DE=sol.get_value(obj_var2)
+    MS=sol.get_value(obj_var1)
     sol_seq=[]
 
     df=[]
@@ -102,7 +103,7 @@ def optimize(instance,hour,prev, dur , seq, start_dc, end, eliminated,max_time =
            
     DF=pd.DataFrame(df)
 
-    return solution, sol_seq,DF, data, eliminated_cp,start_cp,end_cp,DE
+    return solution, sol_seq,DF, data, eliminated_cp,start_cp,end_cp,DE,MS
  
 
 def optimize_and_visualize(hour,prev,dur , seq, start_dc, end,eliminated, time_limit_x=0.3, threads=1):
@@ -124,8 +125,8 @@ def optimize_and_visualize(hour,prev,dur , seq, start_dc, end,eliminated, time_l
         time_to=t1-t2
         return DF, data, eliminated_cp,sol_seq,start_cp,end_cp,MS,DE,time_to
     else:
-        solution,sol_seq,DF, data, eliminated_cp,start_cp,end_cp,DE = optimize(instance,hour,prev,dur , seq, start_dc, end,eliminated,max_time = 10000, time_limit=time_limit_x, threads=1) 
-        MS=solution.get_makespan()
+        solution,sol_seq,DF, data, eliminated_cp,start_cp,end_cp,DE,MS = optimize(instance,hour,prev,dur , seq, start_dc, end,eliminated,max_time = 10000, time_limit=time_limit_x, threads=1) 
+        
         t2=time.time()
         time_to=t1-t2
     return DF, data, eliminated_cp,solution,start_cp,end_cp,MS,DE,time_to
